@@ -1,0 +1,129 @@
+a:link{
+    color:#999999; /* 未访问的链接 */
+}
+a:visited{
+    color: gray;  /* 已访问的链接 */
+}
+a:hover{
+    color: blue; /* 鼠标移动到链接上 */
+}
+a:active{
+    color: black; /* 选定的链接 */
+}
+*{
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0px; /*内边距*/
+    margin: 0px;  /*外边距*/
+    font-size: 15px;
+}
+.main{
+    width: 100%;
+    overflow: hidden;
+}
+.pai_log .width100{
+    width: 100%;
+    height: auto;
+}
+.pai_header{
+    width: 100%;
+    height: 50px;
+    padding: 5px 0px;
+}
+.pai_log{
+    width: 100%;
+    height: 50px;
+}
+.fl{
+    float: left;/*浮动*/
+}
+._img{
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+}
+.overflow{
+    overflow: hidden;
+}
+.header_con{
+    width: 70%;
+    margin: 0px auto;
+    height: auto;
+    line-height: 50px;
+    overflow: hidden;
+}
+.pai_name{
+    padding-left: 10px;
+    font-size: 24px;
+    color: #009fff;
+}
+.pai_plat{
+    color: #000;
+    vertical-align: top;
+    font-family: cursive;
+}
+.CompanyProfile_con{
+    width: 80%;
+    text-align: center; /*居中*/
+    padding: 35px  0px 40px 0px;
+    border-bottom: 2px solid #009fff;
+    margin: 0px auto;
+}
+.Profile_name{    
+    font-size: 30px;
+    color: #000;
+    padding-bottom: 10px; 
+}
+.Profile_text{    
+    font-size: 20px;
+    color: #000;
+}
+.fontWeight{
+    font-weight: bold;
+}
+.pai_banner{
+    width: 100%;
+    height: 100%;  
+}
+.pai_bottom{
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    background: #333333;
+}
+.width100 span{
+    width: 100%;
+    height: 60px;
+    font-size: 27px;
+}
+title{
+    padding: 10px 0px;
+    width: 100%;
+}
+.title_con span{
+    color: #009fff;
+    vertical-align: middle;
+}
+.pai_yuan{
+    font-size: 27px;
+}
+.eight_hun{
+    width: 80%;
+    margin: 0px auto;
+}
+.pai_bottom{
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    background: #333333;
+    color: #fff;
+    text-align: center;
+}
+.sign_pai{
+    height: 40px;
+}
+.pai_bottom span{
+    padding-right: 1%;
+}
+._img20{
+    height: 16px;
+}
