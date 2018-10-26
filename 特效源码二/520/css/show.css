@@ -1,0 +1,25 @@
+*{margin:0;padding:0;}
+body{background:url("images/1.jpg");background-size:cover;}
+/*start top*/
+.top{width:400px;
+    height:100px;
+    margin:60px auto;
+    font-size:30px;font-family:"华文行楷";
+    color:#fff;
+    --background:-webkit-linear-gradient(45deg,#ff0000,#ffcc00,#ffff99,#33ccff,#00ff33,#6600ff,#333399);
+    -webkit-background-clip:text;
+    }
+/*end top*/
+/*start box*/
+.box{width:310px;height:310px;margin:auto;perspective:800px;/*景深*/}
+.box .pic{position:relative;transform-style:preserve-3d;/*3d环境*/ animation:play 10s linear infinite;/*动画名称 执行时间 匀速 无限执行*/}
+.box ul li{list-style:none;position:absolute;top:0;left:0;}
+/*start box*/
+/*定义一个关键帧*/
+@keyframes play{
+    from{transform:rotateY(0deg);}
+    to{transform:rotateY(360deg);}
+}
+/*start text*/
+#text{width:500px;height:200px;color:#6fade1;margin:auto;font-size:24px;font-family:"方正喵呜体";}
+/*end text*/
