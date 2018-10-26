@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <title>我的练习</title>
+        <meta charset="utf-8">
+        <link rel="icon" href="pic2/02.ico"  type="image/icon">
+        <script src="js/01.js" charset="UTF-8"></script>
+        <link rel="stylesheet" href="css/02.css">        
+    </head>
+    <body>
+        <!-- <dl>
+            <dd>
+                <a href="">邮件管理</a>
+            </dd>
+            <dd>
+                <a href="">消息管理</a>
+            </dd>
+            <dd>
+                <a href="">授权管理</a>
+            </dd>
+        </dl> --> 
+        <!-- <button type="button" onclick="myFuncton">点我</button>
+        <p id = "demo">0</p>
+        <script>
+        var add = (function(){
+            var counter = 0;
+            return function() {return counter += 1;}
+        }) ();
+        function myFuncton(){
+            document.getElementById("demo").innerHTML = add();
+        }
+        </script> -->
+        <!-- <button type="button" onclick="datedel()">点我</button>
+        <script>
+        function datedel(){
+            document.getElementById('demo').innerHTML=Date();
+        }      
+        </script>
+        <p id='demo'></p>
+        <script>
+        function myFuncton(){
+            var x = document.getElementById('fname');
+            x.value = x.value.toUpperCase();
+        }
+        </script>
+       
+        <span>输入用户名:</span>
+        <input id="fname" onchange="myFuncton()"> -->
+        
+        <!-- 添加不同事件，冒泡和捕获的区别  -->
+        
+        <div id="myDiv">
+            <p id="myP">我是冒泡</p>
+        </div><br>
+        <div id="myDiv2">
+            <p id="myP2">我是捕获</p>
+        </div><br>
+        <div id="myDiv3">
+
+        </div>
+        <button onclick="removeHandler()" id="myDiv3"></button>
+     
+    </body> 
+</html>
