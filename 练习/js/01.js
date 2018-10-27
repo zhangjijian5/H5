@@ -1,10 +1,11 @@
-function Testfunction(id){
-    var ele = document.getElementById
-        ele('myP').addEventListener('click',function(){
-            alert('你点击了p1元素')
-        },false);
-    }
+// function Testfunction(id){
+//     var search = document.getElementById("id")
+//     search.addEventListener('click',function(){alert('你点击了p1元素');},false)
 
+
+//     }
+
+// Testfunction(myP)
 // document.getElementById("myP").addEventListener("click",function(){
 //     alert("你点击了p1元素");
 //  },false); /**false为冒泡传递**/
@@ -20,3 +21,30 @@ function Testfunction(id){
 
 //  document.getElementById('myDiv3').addEventListener('mousemove',myFunction)
  
+function add(x,y){
+    var z=x+y;
+    return z;
+}
+var i=add(15,11)
+console.log(i)
+
+/* 动态传参 */
+// function add2(){
+//     var z = 0;
+//     if(){
+
+//     }
+// }
+
+function slogan(num,time){
+    /* 参数的默认值*/
+    // if (time == undefined){
+    //     time =7;
+    // }
+    time = time || 8;
+    for(var i = 1;i <= num; i++){
+        console.log(time+'点'+ i +'学习');
+    }
+}
+var time=1;
+slogan(10);
