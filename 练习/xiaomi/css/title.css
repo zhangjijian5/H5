@@ -1,0 +1,71 @@
+/* 初始化html */
+*{
+    padding: 0;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* site-topbar */
+.site-topbar{
+    height:40px ;
+    font-size: 12px;
+    color:#b0b0b0;
+    background: #333;
+}
+/*把div标签设置成块元素*/
+div{
+    display: block;
+}
+/*设置a标签的颜色*/
+a {
+    color: #b0b0b0;
+    text-decoration: none; /*去除超链接下划线*/
+}
+/*鼠标移动上去的颜色*/
+a:hover{
+  color: white;
+}
+.container{
+    width: 1226px;
+    margin-right: auto;
+    margin-left: auto;
+}
+/*.topbar-nav*/
+.site-topbar .topbar-nav{
+    position: relative;
+    float: left;
+    height: 40px;
+    line-height: 40px;
+}
+.site-topbar .topbar-cart{
+    width: 120px;
+    height: 40px;
+    margin-left: 40px;
+    background: #424242;
+    text-align: center;
+}
+.iconfont{
+    margin-right: 5px;
+}
+.site-topbar .topbar-cart a:hover{
+    color: orange;
+}
+.site-topbar .topbar-info{
+    width: 150px; 
+    height: 40px;
+    line-height: 40px;
+    margin-left: 250px;
+}
+.site-topbar .topbar-cart,.site-topbar .topbar-info{
+    position: relative;
+    float: right;
+    height: 40px;
+    line-height: 40px;
+}
+span.tep{
+    margin: 0 8px;
+}
+/* .topbar-info .link{
+    padding: 0 5px;
+    text-align: center;
+} */
