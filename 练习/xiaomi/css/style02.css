@@ -1,0 +1,41 @@
+/* .boder{
+    border: 1px solid red;
+}  */
+/* .seckill-header */
+.seckill .seckill-header{
+    height: 170px;
+    margin-top: 19px;
+}
+.seckill img{
+    width: 1283px;
+    height: 170px;
+}
+
+/* .seckill-nav */
+/* .seckill-nav ul{
+    background: #414141;
+    height: 68px;
+} */
+
+.seckill-nav li{
+    display: block;
+    float: left;
+    font-size: 18px;
+    padding-left: 12px;
+    width: 254.19px;
+    height: 68px;
+    color: #fff;
+    line-height: 68px;
+    text-align: center;
+    background: #414141;
+}
+.seckill-nav li em{
+    /* display: inline-block; */
+    margin-left: 30px;
+    width: 45.05px;
+    height: 18px;
+}
+.seckill-nav .active span{
+    width: 100.39px;
+    height: 40px;
+}
