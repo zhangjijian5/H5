@@ -1,3 +1,10 @@
+.container::before,.container::after{
+    content: "";/*添加一个空内容*/
+    display: block;
+}
+.container::after{
+    clear: both;
+}
 /* .site-header*/
 .site-header{
     position: relative;
@@ -71,7 +78,7 @@ li{
 }
 
 .header-search .search-btn{
-    position: absolute;
+    position: absolute;/*绝对定位*/
     left: 0px;
     top: 0;
     width: 250px;
