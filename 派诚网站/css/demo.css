@@ -1,0 +1,65 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.container::before,.container::after{
+    content: "";
+    display: block;
+}
+.container::after{
+    clear: both;
+}
+/*把div标签设置成块元素*/
+div{
+    display: block;
+}
+/*设置a标签的颜色*/
+a {
+    color: #b0b0b0;
+    text-decoration: none; /*去除超链接下划线*/
+}
+/*鼠标移动上去的颜色*/
+a:hover{
+  color: white;
+}
+
+/* .container */
+.container{
+    height: 60px;
+    background:#333;
+    margin-right:auto ;
+    margin-left: auto;
+}
+.container .topbar-nav,.container .topbar-cart,.container .topbar-info{
+    float: left; 
+    margin: 15px 0;
+}
+
+.container span{
+    margin: 0 20px;
+}
+
+.container .topbar-nav{
+    margin-left: 40px;
+}
+/* .topbar-info */
+.container .topbar-info{
+    margin-left: 475px;
+    margin-right: 40px;
+}
+
+/* .topbar-cart */
+.topbar-cart{
+    background: #424242;
+    width: 120px;
+    height: 60px;
+    margin: 0 0 0 40px;
+    /* text-align: center; */
+}
+.container .topbar-cart span{
+    margin: 0 5px;
+}
+.topbar-cart a:hover{
+    background: orange;
+}
