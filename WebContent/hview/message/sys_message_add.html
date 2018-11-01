@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>新增</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!--   <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script> -->
+    <link rel="stylesheet" href="../../plugin/layui-v2.3.0-rc1/layui/css/layui.css">
+    <script src="../../plugin/layui-v2.3.0-rc1/layui/layui.js"></script>
+    <script src="js/sys_message_add.js"></script>
+</head>
+
+<body>
+<div class="layui-container">
+    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 0;">
+        <legend>发送消息</legend>
+    </fieldset>
+
+    <form class="layui-form layui-form-pane" action="" lay-filter="dialogForm">
+
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <input id="userTypeAll" type="radio" name="userType" value="0" title="所有用户" lay-filter="userType" checked>
+                <input id="userTypeInput" type="radio" name="userType" value="1" title="指定用户" lay-filter="userType">
+            </div>
+        </div>
+
+        <div id="usersDiv" class="layui-form-item layui-form-text layui-hide">
+            <div class="layui-input-block">
+                <textarea placeholder='请输入用户标识，以分号分隔，如：111111111;22222222' name="users"
+                          lay-verify="usersVerify" class="layui-textarea"></textarea>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">类型</label>
+            <div class="layui-input-block">
+                <select id="typeSelect" name="type" lay-filter="typeSelect">
+                    <option value="aesKey">更新AesKey</option>
+                    <option value="baseUrl">更新BaseUrl</option>
+                    <option value="customValue">发送自定义json值</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="aesKeyDiv" class="layui-form-item layui-form-text">
+            <div class="layui-input-block">
+                <textarea placeholder='自定义AesKey值，如:{"aesKey":"value1"}' name="aesKey"
+                          lay-verify="aesKeyVerify" class="layui-textarea" value="dddd">
+                          {"aesKey":"value1"}
+                          </textarea>
+            </div>
+        </div>
+
+        <div id="baseUrlDiv" class="layui-form-item layui-form-text layui-hide">
+            <div class="layui-input-block">
+                <textarea placeholder='自定义BaseUrl值，如:{"baseUrl":"value1"}' name="baseUrl" 
+                lay-verify="baseUrlVerify" class="layui-textarea" value="dddd">
+                {"baseUrl":"value1"}
+                </textarea>
+            </div>
+        </div>
+
+        <div id="customValueDiv" class="layui-form-item layui-form-text layui-hide">
+            <div class="layui-input-block">
+                <textarea placeholder='自定义json值，如:{"key1":"value1"}' name="customValue" lay-verify="customValueVerify" class="layui-textarea"></textarea>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit="" lay-filter="fsubmit">立即提交</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+
+    </form>
+</div>
+</body>
+
+</html>

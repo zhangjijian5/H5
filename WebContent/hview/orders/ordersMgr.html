@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>列表</title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link rel="stylesheet" href="../../plugin/layui-v2.3.0-rc1/layui/css/layui.css" media="all">
+		<!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+		<script src="../../plugin/layui-v2.3.0-rc1/layui/layui.js"></script>
+		<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+		<script src="js/appVersion_list.js"></script>
+		<script src="/static/build/layui.js"></script>
+		<style type="text/css">
+			div {
+				font-family: inherit;
+				font-size: inherit;
+				font-style: inherit;
+				font-weight: inherit;
+				outline: 0;
+			}
+		</style>
+
+	</head>
+
+	<body>
+		
+		<form action="javaScript:void(0)" method="post">
+		<div class="layui-inline">
+			<!-- 注意：这一层元素并不是必须的 -->
+			<input type="text" class="layui-input" placeholder="时间" id="test1">
+		</div>
+		<select name="city" lay-verify="">
+			<option value="">业务类型</option>
+			<option value="010">餐饮</option>
+			<option value="021">美食</option>
+			<option value="0571">甜品</option>
+		</select>
+
+		<select name="city" lay-verify="">
+			<option value="">支付状态</option>
+			<option value="010">已支付</option>
+			<option value="021">未支付</option>			
+		</select>
+		
+		<select name="city" lay-verify="">
+			<option value="">客户流程</option>
+			<option value="010">XXX</option>
+			<option value="021">xxx</option>
+			<option value="0571">xxx</option>
+		</select>
+		
+		<select name="city" lay-verify="">
+			<option value="">店铺流程</option>
+			<option value="010">xxx</option>
+			<option value="021">xxx</option>
+			<option value="0571">xxx</option>
+		</select>
+		<select name="city" lay-verify="">
+			<option value="">配送流程</option>
+			<option value="010">xxxx</option>
+			<option value="021">xxxx</option>
+			<option value="0571">xxxx</option>
+		</select>
+
+		<label class="layui-form-label"></label>
+		<div class="layui-input-inline">
+			<button class="layui-btn" lay-submit lay-filter="formSearch">搜索</button>
+		</div>
+			</form>
+<hr class="layui-bg-gray">
+
+	<table id="demo" lay-filter="test"></table>
+<script>
+layui.use('table', function(){
+  var table = layui.table;
+  
+  table.render({
+    elem: '#demo'
+    ,height: 315
+    ,url: '/demo/table/user/' //数据接口
+    ,page: true //开启分页
+    ,cols: [[ //表头
+      {field: 'id', title: '订单编号', width:120, sort: true, fixed: 'left'}
+      ,{field: 'username', title: '用户姓名', width:120}
+      ,{field: 'sex', title: '用户手机号', width:120, sort: true}
+      ,{field: 'city', title: '业务类型', width:120} 
+      ,{field: 'sign', title: '下单时间', width: 120}
+      ,{field: 'experience', title: '所属校区', width: 120, sort: true}
+      ,{field: 'score', title: '支付状态', width: 120, sort: true}
+      ,{field: 'classify', title: '客户流程', width: 120}
+      ,{field: 'wealth', title: '店铺流程', width: 135, sort: true}
+      ,{field: 'wealth', title: '店铺流程', width: 135, sort: true}
+      ,{field: 'wealth', title: '配送流程', width: 135, sort: true}
+      ,{field: 'wealth', title: '详情', width: 135, sort: true}
+    ]]
+  });
+  
+});
+</script>
+		<script>
+			layui.use('laydate', function() {
+				var laydate = layui.laydate;
+
+				//执行一个laydate实例
+				laydate.render({
+					elem: '#test1' //指定元素
+				});
+			});
+		</script>
+	</body>
+
+</html>

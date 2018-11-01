@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>退单列表</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="stylesheet" href="../../plugin/layui-v2.3.0-rc1/layui/css/layui.css" media="all">
+	<!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+	<script src="../../plugin/layui-v2.3.0-rc1/layui/layui.js"></script>
+	<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+	<script src="js/backOrderMgr.js"></script>
+</head>
+
+<body>
+	
+<div class="layui-tab">
+	<div class="layui-col-md1">
+		<button class="layui-btn" id="btnAdd">添加</button>
+	</div>
+<hr class="layui-bg-gray">
+	
+  <ul class="layui-tab-title">
+    <li class="layui-this">外卖退单</li>
+    <li>快递退单</li>
+  </ul>
+  
+  <div class="layui-tab-content">
+    <div class="layui-tab-item layui-show">
+   <div class="layui-col-md12">
+		<table class="layui-hide" id="tableContent" lay-filter="tcont"></table>
+	</div>
+   <script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+	</script>
+    </div>
+   <div class="layui-tab-item">
+   	 <div class="layui-col-md12">
+		<table class="layui-hide" id="table" lay-filter="tcont"></table>
+	</div>
+   	<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+	</script>
+   	
+   </div>
+    <div class="layui-tab-item">内容3</div>
+  </div>
+</div>
+ 
+<script>
+//注意：选项卡 依赖 element 模块，否则无法进行功能性操作
+layui.use('element', function(){
+  var element = layui.element;
+  //…
+});
+</script>
+     
+</body>
+
+</html>

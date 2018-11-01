@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>列表</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="stylesheet" href="../../plugin/layui-v2.3.0-rc1/layui/css/layui.css" media="all">
+	<!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+	<script src="../../plugin/layui-v2.3.0-rc1/layui/layui.js"></script>
+	<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+	<script src="js/customerOrder_list.js"></script>
+	
+</head>
+
+<body>
+	<div class="layui-fluid">
+		<form class="layui-form" action="">
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label">时间范围</label>
+					<div class="layui-input-inline">
+       				<!--<input type="text" name="createTime" class="layui-input" id="test6" placeholder=" - ">-->
+    				 <input type="text" name="createTime" class="layui-input" id="test10" placeholder=" - ">
+					</div>
+					
+				<div class="layui-inline ">
+						<label class="layui-form-label">所在学校</label>
+					<div class="layui-input-block  layui-form" lay-filter="selFilter">
+							<select id="scl" name="schoolId"  lay-filter="school" >
+								<option value=""></option>
+							</select>
+					</div>
+				    </div>			
+					<div class="layui-inline ">
+						<label class="layui-form-label">所在校区</label>
+					<div class="layui-input-block  layui-form" lay-filter="selFilter">
+							<select id="cps" name="campusId"  lay-filter="" >
+								<option value=""></option>
+							</select>
+					</div>
+					</div>
+					<div class="layui-inline ">
+						<label class="layui-form-label">业务类型</label>
+						<div class="layui-input-block  layui-form" lay-filter="selFilter">
+							<select id="bt" name="businessType">
+								<option value=""></option>
+							</select>
+						</div>
+					</div>
+					<div class="layui-inline ">
+						<label class="layui-form-label">支付状态</label>
+						<div class="layui-input-block  layui-form" lay-filter="selFilter">
+							<select id="spy" name="odrStatePayment">
+								<option value="">请选择支付状态</option>
+								<option value="0">未支付</option>
+								<option value="1">支付完成</option>
+								<option value="2">定金支付待核算</option>
+								<option value="3">核算完成待支付</option>
+							</select>
+						</div>
+					</div>
+					<div class="layui-inline ">
+						<label class="layui-form-label">客户状态</label>
+						<div class="layui-input-block  layui-form" lay-filter="selFilter">
+							<select id="osc" name="odrStateCustomer">
+								<option value=""></option>
+							</select>
+						</div>
+					</div>
+					<div class="layui-inline ">
+						<label class="layui-form-label">店铺状态</label>
+						<div class="layui-input-block  layui-form" lay-filter="selFilter">
+							<select id="oss" name="odrStateShopStore">
+								<option value=""></option>
+							</select>
+						</div>
+					</div>
+					<div class="layui-inline ">
+						<label class="layui-form-label">配送状态</label>
+						<div class="layui-input-block  layui-form" lay-filter="selFilter">
+							<select id="osd" name="odrStateDistribution">
+								<option value=""></option>
+							</select>
+						</div>
+					</div>
+					<div class="layui-inline ">
+						<label class="layui-form-label">客单号</label>
+						<div class="layui-input-block  layui-form" lay-filter="selFilter">
+							<input type="text" name="orderId" class="layui-input" id="orderId" placeholder="请输入客单号">
+						</div>
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label"></label>
+					<div class="layui-input-inline">
+						<button class="layui-btn" lay-submit lay-filter="formSearch">搜索</button>
+					</div>
+				</div>
+			</div>
+		</form>
+
+	</div>
+
+	<!--<div class="layui-col-md1">
+		<button class="layui-btn" id="btnAdd">添加</button>
+	</div>-->
+	<!-- <div class="demoTable layui-col-md4">
+		名称：
+		<div class="layui-inline">
+			<input class="layui-input" name="id" id="ipt_search" autocomplete="off">
+		</div>
+		<button id="btn_search" class="layui-btn" data-type="reload">搜索</button>
+	</div> -->
+	<div>
+	查询范围，默认为今天 向前 7天内的订单。
+	</div>
+	<div class="layui-col-md12">
+		<table class="layui-hide" id="tableContent" lay-filter="tcont"></table>
+	</div>
+
+	<script type="text/html" id="barDemo">
+		<a class="layui-btn layui-btn-xs" lay-event="payment">支付情况</a>
+    	<a class="layui-btn layui-btn-xs" lay-event="detail">查看详情</a>
+		<a class="layui-btn layui-btn-xs" lay-event="timeline">时间线</a>
+    <!--<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>-->
+	</script>
+
+</body>
+
+</html>

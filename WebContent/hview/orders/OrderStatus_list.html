@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>列表</title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link rel="stylesheet" href="../../plugin/layui-v2.3.0-rc1/layui/css/layui.css" media="all">
+		<!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+		<script src="../../plugin/layui-v2.3.0-rc1/layui/layui.js"></script>
+		<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+		<script src="js/OrderStatus_list.js"></script>
+
+	</head>
+
+	<body>
+		<div id="">
+			<div class="layui-fluid">
+				<form class="layui-form" action="">
+					<div class="layui-form-item">
+						<div class="layui-inline ">
+							<label class="layui-form-label">店铺单流程</label>
+							<div class="layui-input-block  layui-form" lay-filter="selFilter">
+								<select id="st" name="state_store">
+									<option value="all">全部</option>
+									<option value="1">接单</option>
+									<option value="2">处理开始</option>
+									<option value="3">处理完成</option>
+									<option value="4">完单</option>
+									<option value="-1">退单</option>
+								</select>
+							</div>
+						</div>
+						<div class="layui-inline ">
+							<label class="layui-form-label">请选择学校</label>
+							<div class="layui-input-block  layui-form" lay-filter="selFilter">
+								<select id="scl" name="schoolId" lay-filter="school" lay-verify="required" lay-search="">
+									<option value=""></option>
+								</select>
+							</div>
+						</div>
+						<div class="layui-inline ">
+							<label class="layui-form-label">请选择校区</label>
+							<div class="layui-input-block  layui-form" lay-filter="selFilter">
+								<select id="cps" name="campusId">
+								<option value=""></option>
+								</select>
+							</div>
+						</div>
+						<div class="layui-inline">
+							<div class="layui-input-inline">
+								<button class="layui-btn" lay-submit lay-filter="formSearch">搜索</button>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+
+			<div class="layui-col-xs6 layui-col-sm6 layui-col-md6">
+				<table class="layui-hide" id="tableContent" lay-filter="tcont"></table>
+			</div>
+			<div class="layui-col-xs6 layui-col-sm6 layui-col-md6">
+				<table class="layui-hide" id="table" lay-filter="tcont"></table>
+			</div>
+
+			<script type="text/html" id="barDemo">
+				<a class="layui-btn layui-btn-xs" lay-event="edit">查看详情</a>
+			</script>
+		</div>
+
+		<script type="text/html" id="bar">
+			<a class="layui-btn layui-btn-xs" lay-event="detail">查看详情</a>
+		</script>
+	</body>
+
+</html>

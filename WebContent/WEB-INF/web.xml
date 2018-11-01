@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	id="WebApp_ID" version="3.1">
+	<!-- jersey的rest配置 -->
+	<servlet>
+		<servlet-name>jersey-serlvet</servlet-name>
+		<servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+		<init-param>
+			<param-name>javax.ws.rs.Application</param-name>
+			<param-value>com.pai.config.RESTServiceConfig</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>jersey-serlvet</servlet-name>
+		<url-pattern>/rest/*</url-pattern>
+	</servlet-mapping>
+	<!-- spring配置 -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:applicationContext.xml,classpath:dubbo-demo-consumer.xml,classpath:spring*.xml</param-value>
+		<!-- <param-value>classpath:dubbo-demo-provider.xml</param-value> -->
+	</context-param>
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<!-- spring整合request对象 -->
+	<listener>
+		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+	</listener>
+	<!-- <listener> <listener-class>com.pai.piCampus.vo.OnlineSessionListener</listener-class> 
+		</listener> -->
+
+	<!-- Druidl连接池 监控统计页面 -->
+	<servlet>
+		<servlet-name>DruidStatView</servlet-name>
+		<servlet-class>com.alibaba.druid.support.http.StatViewServlet</servlet-class>
+		<init-param>
+			<!-- 用户名 -->
+			<param-name>loginUsername</param-name>
+			<param-value>xuexxd</param-value>
+		</init-param>
+		<init-param>
+			<!-- 密码 -->
+			<param-name>loginPassword</param-name>
+			<param-value>302302pi</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DruidStatView</servlet-name>
+		<url-pattern>/druid/*</url-pattern>
+	</servlet-mapping>
+	<!-- Druidl的web关联监控，WebStatFilter用于采集web-jdbc关联监控的数据 -->
+	<filter>
+		<filter-name>druidWebStatFilter</filter-name>
+		<filter-class>com.alibaba.druid.support.http.WebStatFilter</filter-class>
+		<init-param>
+			<param-name>exclusions</param-name>
+			<param-value>/public/*,/druid*,*.js,*.gif,*.jpg,*.png,*.css,*.ico,*.jsp,*.swf,*.woff,</param-value>
+		</init-param>
+		<init-param>
+			<param-name>principalSessionName</param-name>
+			<param-value>sessionInfo</param-value>
+		</init-param>
+		<init-param>
+		<!-- 配置profileEnable能够监控单个url调用的sql列表 -->
+			<param-name>profileEnable</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>druidWebStatFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<!--<filter> -->
+	<!--<filter-name>CorsFilter</filter-name> -->
+	<!--<filter-class>com.pai.piCampus.filter.CORSFilter</filter-class> -->
+	<!--</filter> -->
+	<!--<filter-mapping> -->
+	<!--<filter-name>CorsFilter</filter-name> -->
+	<!--<url-pattern>/*</url-pattern> -->
+	<!--</filter-mapping> -->
+	
+	<servlet>
+		<servlet-name>wxCodeServlet</servlet-name>
+		<servlet-class>com.pai.funpkg.mpweixin.WxCodeServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>wxCodeServlet</servlet-name>
+		<url-pattern>/wxCodeServlet</url-pattern> <!--url-pattern必须与servlet-name一致 -->
+	</servlet-mapping>
+
+</web-app>

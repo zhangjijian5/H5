@@ -1,0 +1,87 @@
+﻿<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>新增</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!--   <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script> -->
+  <link rel="stylesheet" href="../../plugin/layui-v2.3.0-rc1/layui/css/layui.css">
+  <script src="../../plugin/layui-v2.3.0-rc1/layui/layui.js"></script>
+  <script src="js/shopRole_add.js"></script>
+</head>
+
+<body>
+  <div class="layui-container">
+    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 0;">
+      <legend>店铺权限</legend>
+    </fieldset>
+
+    <form class="layui-form layui-form-pane" action="" lay-filter="dialogForm">
+      <div class="layui-form-item">
+        <div class="layui-inline ">
+          <label class="layui-form-label">权限名称</label>
+          <div class="layui-input-inline">
+            <input type="text" name="powerName" lay-verify="required|title" autocomplete="off" placeholder="请输入名称" class="layui-input">
+          </div>
+          <label class="layui-form-label">权限编号</label>
+          <div class="layui-input-inline">
+            <input type="text" name="powerCode" lay-verify="required|title" autocomplete="off" placeholder="请输入编号" class="layui-input">
+          </div>
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <!--<div class="layui-inline ">
+          <label class="layui-form-label">店铺类型</label>
+          <div class="layui-input-inline">
+            <input type="radio" name="ssOrgType" value="1" title="配送机构" checked>
+            <input type="radio" name="ssOrgType" value="10" title="快递点">
+            <input type="radio" name="ssOrgType" value="11" title="校园美食">
+            <input type="radio" name="ssOrgType" value="12" title="甜品饮品">
+            <input type="radio" name="ssOrgType" value="13" title="校园便利">
+            <input type="radio" name="ssOrgType" value="2" title="校园运营机构">
+          </div>
+          <label class="layui-form-label">删除位</label>
+          <div class="layui-input-inline">
+            <input type="radio" name="deltag" value="0" title="未删除" checked>
+            <input type="radio" name="deltag" value="1" title="删除">
+          </div>
+        </div>-->
+        <div class="layui-inline ">
+						<label class="layui-form-label">店铺类型</label>
+						<div class="layui-input-block  layui-form" lay-filter="selFilter">
+							<select id="st" name="ssOrgType" lay-filter="">
+								<option value=""></option>
+							</select>
+						</div>
+					</div>
+					<div class="layui-inline ">
+						<label class="layui-form-label">删除位</label>
+						<div class="layui-input-block  layui-form" lay-filter="selFilter">
+							<select id="del" name="deltag" lay-filter="">
+								<option value="0">默认未删除</option>
+								<option value="1">删除</option>
+							</select>
+						</div>
+					</div>  
+      </div>
+      <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">备注</label>
+        <div class="layui-input-block">
+          <textarea name="remark" placeholder="请输入内容" class="layui-textarea"></textarea>
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <div class="layui-input-block">
+          <button class="layui-btn" lay-submit="" lay-filter="fsubmit">立即提交</button>
+          <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</body>
+
+</html>

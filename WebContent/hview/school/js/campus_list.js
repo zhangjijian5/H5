@@ -1,0 +1,330 @@
+layui.use(['form', 'table'], function() {
+	var table = layui.table,
+		form = layui.form,
+		$ = layui.$;
+
+	var listTabPage = {
+		limit: 15,
+		limits: [5, 15, 30, 40, 50],
+		groups: 3,
+		prev: '上一页',
+		next: '下一页',
+		first: '首页',
+		last: '尾页',
+		layout: ['first', 'prev', 'page', 'next', 'last', 'skip', 'count', 'limit', 'refresh']
+	};
+	//方法级渲染
+	var listTable = table.render({
+		id: 'listTable',
+		elem: '#tableContent',
+		url: '/piPaiCampus/rest/school/selectAllCampus',
+		method: 'post',
+		cols: [
+			[{
+				type: 'numbers',
+				title: '序号'
+			}, {
+				field: 'campusName',
+				title: '校区名称',
+				sort: true,
+				width: 220
+			}, {
+				field: 'schoolName',
+				title: '学校名称',
+				sort: true
+			}, {
+				field: '',
+				title: '是否运营',
+				width: 200,
+				templet: function(d) {
+					var a = d.yesOptRun;
+					if(a == 0) {
+						return '否'
+					}
+					if(a == 1) {
+						return '是'
+					}
+				}
+			}, {
+				field: '',
+				title: '操作',
+				width: 340,
+				toolbar: '#barDemo',
+				align: 'center'
+			}]
+		],
+		page: listTabPage,
+		height: 'full-160',
+		cellMinWidth: 180
+	});
+	//监听工具条
+	table.on('tool(tcont)', function(obj) {
+		var data = obj.data;
+		if(obj.event === 'detail') {
+			/*layer.msg('ID：' + data.schoolName + ' 的查看操作');*/
+			sessionStorage.setItem('page', JSON.stringify(data));
+		} else if(obj.event === 'del') {
+			layer.confirm('真的删除行么', function(index) {
+				console.log(data);
+				//data.setItem("docUid",data.userId);
+				// data.docUid = data.userId;
+				data.vsnid = data.id;
+				deleteItem(data);
+				obj.del();
+				layer.close(index);
+			});
+		} else if(obj.event === 'edit') {
+			editItem(data);
+		} else if(obj.event === 'set') {
+			sessionStorage.setItem('page', JSON.stringify(data));
+			setItem(data);
+		} else if(obj.event === 'on_off') {
+			onOffItem(data);
+		} else if(obj.event === 'check') {
+			data.campusId = data.id;
+			checkItem(data);
+		}
+	});
+
+	function checkItem(data) {
+		var fstr = '';
+		for(var p in data) { //遍历json对象的每个key/value对,p为key
+			fstr = fstr + p + "=" + data[p] + ';';
+		}
+		fstr += 'doAction=check';
+		// console.log(fstr);
+		$.ajax({
+			url: "/piPaiCampus/rest/school/checkCampus",
+			type: 'POST',
+			dataType: 'text',
+			data: 'para=' + fstr,
+			success: function(result) {
+				console.log(result);
+				layer.alert('检查完成');
+			},
+			error: function(result) {
+				console.log(result);
+				layer.alert('检查异常');
+			}
+		});
+	}
+
+	function onOffItem(data) {
+		// sessionStorage.setItem("editdata", JSON.stringify(data));
+		var randmStr = Math.random();
+		data["doAction"] = "onOff";
+		// console.log(data);
+		// layer.alert('编辑行：<br>' + JSON.stringify(data))
+		layer.open({
+			type: 2 //0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）。
+				,
+			title: '编辑',
+			area: ['700px', '500px'],
+			content: ['on_off.html?randmStr=' + randmStr, 'no'],
+			id: 'userEdit',
+			success: function(layero, index) {
+				layer.setTop(layero); //重点2
+				layer.iframeAuto(index);
+				// 获取子页面的iframe  
+				var iframe = window['layui-layer-iframe' + index];
+				// 向子页面的全局函数child传参 
+				iframe.child(data);
+			},
+			// cancel: function (index, layero) {
+			//     if (confirm('确定要关闭么')) { //只有当点击confirm框的确定时，该层才会关闭
+			//         layer.close(index)
+			//     }
+			//     return false;
+			// },
+			end: function() {
+				listTable.reload({
+					page: listTabPage
+				});
+			}
+		});
+	}
+
+	function editItem(data) {
+		// sessionStorage.setItem("editdata", JSON.stringify(data));
+		var randmStr = Math.random();
+		data["doAction"] = "edit";
+		// console.log(data);
+		// layer.alert('编辑行：<br>' + JSON.stringify(data))
+		layer.open({
+			type: 2 //0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）。
+				,
+			title: '编辑',
+			area: ['700px', '500px'],
+			content: ['campus_edit.html?randmStr=' + randmStr, 'no'],
+			id: 'userEdit',
+			success: function(layero, index) {
+				layer.setTop(layero); //重点2
+				layer.iframeAuto(index);
+				// 获取子页面的iframe  
+				var iframe = window['layui-layer-iframe' + index];
+				// 向子页面的全局函数child传参 
+				iframe.child(data);
+			},
+			// cancel: function (index, layero) {
+			//     if (confirm('确定要关闭么')) { //只有当点击confirm框的确定时，该层才会关闭
+			//         layer.close(index)
+			//     }
+			//     return false;
+			// },
+			end: function() {
+				listTable.reload({
+					page: listTabPage
+				});
+			}
+		});
+	}
+
+	function setItem(data) {
+		// sessionStorage.setItem("editdata", JSON.stringify(data));
+		var randmStr = Math.random();
+		data["doAction"] = "set";
+		// console.log(data);
+		// layer.alert('编辑行：<br>' + JSON.stringify(data))
+		layer.open({
+			type: 2 //0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）。
+				,
+			title: '管理员设置',
+			area: ['700px', '500px'],
+			content: ['operator_list.html?randmStr=' + randmStr, 'no'],
+			id: 'userEdit',
+			success: function(layero, index) {
+				layer.setTop(layero); //重点2
+				layer.iframeAuto(index);
+				// 获取子页面的iframe  
+				var iframe = window['layui-layer-iframe' + index];
+				// 向子页面的全局函数child传参 
+				iframe.child(data);
+			},
+			// cancel: function (index, layero) {
+			//     if (confirm('确定要关闭么')) { //只有当点击confirm框的确定时，该层才会关闭
+			//         layer.close(index)
+			//     }
+			//     return false;
+			// },
+			end: function() {
+				listTable.reload({
+					page: listTabPage
+				});
+			}
+		});
+	}
+
+	function deleteItem(data) {
+		var fstr = '';
+		for(var p in data) { //遍历json对象的每个key/value对,p为key
+			fstr = fstr + p + "=" + data[p] + ';';
+		}
+		fstr += 'doAction=delete';
+		// console.log(fstr);
+		$.ajax({
+			url: "/piPaiCampus/rest/school/delCampus",
+			type: 'POST',
+			dataType: 'text',
+			data: 'para=' + fstr,
+			success: function(result) {
+				// console.log(result);
+			}
+		});
+	}
+
+	$("#btnAdd").click(function() {
+		var randmStr = Math.random();
+		layer.open({
+			type: 2 //0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）。
+				,
+			title: '新增',
+			maxmin: true,
+			area: ['700px', '500px'],
+			content: ['school_add.html?randmStr=' + randmStr, 'no'],
+			id: 'userAdd',
+			success: function(layero, index) {
+				layer.setTop(layero); //重点2
+				layer.iframeAuto(index);
+			},
+			// cancel: function (index, layero) {
+			//     if (confirm('确定要关闭么')) { //只有当点击confirm框的确定时，该层才会关闭
+			//         layer.close(index)
+			//     }
+			//     return false;
+			// },
+			end: function() {
+				//                table.reload('listTable', {
+				//                    page: listTabPage
+				//                });
+				listTable.reload({
+					page: listTabPage
+				});
+			}
+		});
+	});
+
+	//搜索监听提交
+	form.on('submit(formSearch)', function(data) {
+		var fstr = '';
+		for(var p in data.field) { //遍历json对象的每个key/value对,p为key
+			fstr = fstr + p + "=" + data.field[p] + ';';
+		}
+		// fstr += 'doAction=add';
+		// console.log(fstr);
+
+		listTable.reload({
+			where: { //设定异步数据接口的额外参数，任意设
+				para: fstr
+				//…
+			},
+			page: listTabPage
+		});
+
+		return false;
+	});
+
+	$(function() {
+
+		// $.ajax({
+		//     url: "/vpulseservice/VHrest/adminyix/queryHistoryInit",
+		//     type: 'GET',
+		//     dataType: 'text',
+		//     success: function (result) {
+		//         var results = JSON.parse(result);
+
+		//         localStorage.setItem("hospitalsOfThree", JSON.stringify(results.hospitalsOfThree));
+		//         localStorage.setItem("hospitalsType", JSON.stringify(results.hospitalsType));
+		//         localStorage.setItem("areaCode", JSON.stringify(results.areaCode));
+
+		//         var areaCode = results.areaCode;
+		//         if (areaCode) {
+		//             // console.log(areaCode);
+		//             $("#areaOtn").html("");
+		//             $("#areaOtn").append('<option value="">请选择地区</option>');
+		//             for (var i = 0; i < areaCode.length; i++) {
+		//                 var item = areaCode[i];
+		//                 var optionStr = "<option value='" + item.ocode + "'>" + item.oname + "</option>";
+		//                 //console.log(optionStr);
+		//                 $("#areaOtn").append(optionStr);
+		//             }
+		//         }
+		//         var hplLevel = results.hospitalsType;
+		//         if (hplLevel) {
+		//             // console.log(hplLevel);
+		//             $("#hplLevel").html("");
+		//             $("#hplLevel").append('<option value="">医院类型</option>');
+		//             for (var i = 0; i < hplLevel.length; i++) {
+		//                 var item = hplLevel[i];
+		//                 var optionStr = "<option value='" + item.ocode + "'>" + item.oname + "</option>";
+		//                 //console.log(optionStr);
+		//                 $("#hplLevel").append(optionStr);
+		//             }
+		//         }
+		//         form.render('select');
+
+		//         //                console.log(result);
+		//     }
+		// });
+	});
+
+});

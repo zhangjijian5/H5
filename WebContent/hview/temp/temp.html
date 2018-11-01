@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>列表</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+	<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+</head>
+
+<body>
+	
+	<script>
+	$.ajax({
+        url: "http://121.43.170.199:9088/piPaiCampus/rest/app/startInit",
+        type: 'POST',
+        dataType: 'text',
+        data: 'para=',
+        success: function (result) {
+			
+        	console.log(result);
+        }
+    });
+	</script>
+
+
+</body>
+
+</html>
