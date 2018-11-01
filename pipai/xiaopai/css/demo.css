@@ -23,39 +23,46 @@ a {
 a:hover{
   color: white;
 }
-
+/* .site-topbar */
+.site-topbar{
+    height: 60px;
+    font-size: 14px;
+    background: #333;
+}
 /* .container */
 .container{
-    height: 60px;
-    background:#333;
+    width: 1226px;
     margin-right:auto ;
     margin-left: auto;
-}
-.container .topbar-nav,.container .topbar-cart,.container .topbar-info{
-    float: left; 
-    margin: 15px 0;
 }
 
 .container span{
     margin: 0 20px;
 }
-
 .container .topbar-nav{
+    float: left;
     margin-left: 40px;
+    height: 60px;
+    line-height: 60px;
 }
 /* .topbar-info */
 .container .topbar-info{
-    margin-left: 475px;
+    float: left; 
+    height: 60px;
+    line-height: 60px;
     margin-right: 40px;
+    margin-left: 420px;
 }
 
 /* .topbar-cart */
-.topbar-cart{
-    background: #424242;
+.topbar-cart{ 
+    float: left;   
     width: 120px;
+    line-height: 60px;
     height: 60px;
-    margin: 0 0 0 40px;
-    /* text-align: center; */
+    background: #424242;
+    text-align:center;
+    vertical-align: center;
 }
 .container .topbar-cart span{
     margin: 0 5px;
